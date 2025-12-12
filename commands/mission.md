@@ -17,27 +17,38 @@ model: sonnet
 
 ## SOP (Standard Operating Procedure)
 
-### Phase 1: Situational Awareness (Parallel Recon)
+### Phase 1: Situational Awareness (Swarm Recon)
 
-1.  **Dispatch Recon:**
-    * You need to know *Where* (Code) and *How* (Rules).
-    * **Action:** Launch two agents in parallel via `Task`:
-        * **Call A (Radar):** `Task(agent="investigator", prompt="Locate file paths related to: [User Request]. Return strict file list.")`
-        * **Call B (Archivist):** `Task(agent="librarian", prompt="Find architectural standards and libraries related to: [User Request]. Check /llmdoc and Web.")`
-    * **Wait:** Collect the *File List* from A and *Rules* from B.
+1.  **Tactical Decomposition:**
+    * Analyze the user request. Break it down into **Distinct Search Domains**.
+    * *Example:* If task is "Refactor Auth", split into "UI Components", "API Logic", and "Database Schema".
+
+2.  **Deploy Recon Squad (Parallel Dispatch):**
+    * **Action:** Launch as many agents as needed to cover the domains. **Do not limit to one.**
+    * **Examples:**
+        * `Task(agent="investigator", prompt="[Domain A] Locate file paths for UI components related to...")`
+        * `Task(agent="investigator", prompt="[Domain B] Locate file paths for Backend logic related to...")`
+        * `Task(agent="librarian", prompt="[Rules] Find architectural standards for...")`
+    * **Wait:** Collect **ALL** reports from the squad.
 
 ### Phase 2: Strategic Planning (The Brain)
 
-1.  **Dispatch Analyst:**
-    * You need a plan.
+1.  **Synthesize Intelligence:**
+    * You now have multiple reports.
     * **Action:** Call `Task(agent="scout")`.
-    * **Prompt:** "Read files: [File List]. Apply rules: [Rules]. Analyze logic and WRITE the `llmdoc/agent/strategy-[topic].md`."
+    * **Prompt:**
+      > "I have gathered intelligence from multiple sectors:
+      > 1. [Insert Report A]
+      > 2. [Insert Report B]
+      > 3. [Insert Librarian Rules]
+      >
+      > **Mission:** Read the specific files identified in these reports. Analyze logic and WRITE the `llmdoc/agent/strategy-[topic].md`."
 
 ### Phase 3: The Gatekeeper (Approval)
 
 1.  **Seek Approval:**
     * **Action:** Read the `strategy-[topic].md` file.
-    * **Present Options:** Use `AskUserQuestion` to present the plan:
+    * **Present Options:** Use `AskUserQuestion`:
         > "Commander reporting. Strategy ready at [Path].
         > **Summary:** [Brief recap]
         >
