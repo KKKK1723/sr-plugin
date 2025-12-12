@@ -48,10 +48,15 @@ You MUST use the `Write` tool to create a file with this EXACT structure:
 
 ## 3. The Plan
 <ExecutionPlan>
-1. **[Action/File]**: [Detailed instruction. E.g., "In `auth.ts`, modify `verifyToken` to accept..."]
-2. **[Action/File]**: [Next step...]
+**Block 1: Core Fixes**
+1. Fix `Box3.applyMatrix4` logic in `src/math/Box3.ts`.
+2. Fix `Euler.rotateVector3`...
+
+**Block 2: Extension Tests**
+1. Create `tests/Box2.test.ts`.
+2. Create `tests/Circle.test.ts`.
+...
 </ExecutionPlan>
-</FileFormat>
 
 **Key Rules:**
 - **Think before you write.** The Worker is dumb; your plan must be smart.

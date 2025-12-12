@@ -18,27 +18,44 @@ model: sonnet
     * *Goal:* Get enough info to choose between `/do`, `/mission`, or `/campaign`.
     * *Stop Condition:* As soon as you know WHICH command to run, stop asking.
 
-### Step 2: Route (The Hand-off)
-**Decision Matrix:**
+### Step 2: Route (The Decision Matrix)
 
-* **🏎️ Fast Track (Simple/Known):**
-    * *Target:* **`/do`**
-    * *Criteria:* Typo, style change, single file fix.
-* **🛡️ Deep Track (Complex/Unknown):**
-    * *Target:* **`/mission`**
-    * *Criteria:* Logic change, refactor, "it doesn't work", new feature.
-* **⚔️ Battle Mode (Batch):**
-    * *Target:* **`/campaign`**
-    * *Criteria:* "Multiple tasks", "5 demos", "Update all".
-* **🏥 Health Mode (Check):**
-    * *Target:* **`/audit`**
-    * *Criteria:* "Check code", "Find bugs", "Security scan".
+**Analyze the User's Intent against these profiles:**
+
+* **🏎️ Fast Track (`/do`)**
+    * *Profile:* **Atomic & Simple.**
+    * *Signs:* Single file change, typo fix, style tweak, "rename this".
+    * *Action:* Route to `/do`.
+
+* **⚔️ Battle Mode (`/campaign`)**
+    * *Profile:* **Composite & Multi-step.**
+    * *Signs:*
+        * Explicit lists: "1. Fix bug, 2. Add test".
+        * Conjunctions: "Fix X **AND** then create Y".
+        * Plurals: "Update **all** demos", "Create **5** files".
+        * Disjoint tasks: "Clean TODOs" + "Fix Logic" (Unrelated goals).
+    * *Action:* Route to `/campaign`.
+
+* **🛡️ Deep Track (`/mission`)**
+    * *Profile:* **Deep & Cohesive.**
+    * *Signs:*
+        * "Refactor [Module]". (Requires deep context of one area).
+        * "Investigate why [Error] happens". (Unknown cause).
+        * "Implement [Feature]". (Requires logic + database + UI, but tightly coupled).
+    * *Action:* Route to `/mission`.
+
+* **🏥 Health Mode (`/audit`)**
+    * *Profile:* **Passive Scan.**
+    * *Signs:* "Check code", "Find bugs", "Security scan".
+    * *Action:* Route to `/audit`.
 
 ### Step 3: Execution (Transfer Only)
-1.  **Construct Prompt:** Write a clear, single-sentence instruction for the target command.
+1.  **Construct Prompt:** Write a clear instruction.
+    * *For Campaign:* Explicitly list the sub-tasks found. (e.g., "1. Fix Box3... 2. Create Tests... 3. Clean TODOs")
 2.  **Invoke:** Call the target command.
     * *Action:* "Routing to [Command] with prompt: [Refined Prompt]"
-    * **CRITICAL:** Do NOT call `worker`, `scout` or `investigator` directly. ONLY call the command (e.g., `RunCommand("/do ...")` or just tell the user you are running it).
+    * **CRITICAL:** Do NOT call sub-agents directly. ONLY call the command.
 
 ## Example
-* User: "Login is broken." -> You: "How?" -> User: "It throws 500." -> **You:** "Running: `/mission Investigate 500 error on login`."
+* User: "Login is broken." -> You: "How?" -> User: "500 error." -> **Target:** `/mission`
+* User: "Fix the bug in auth and then write tests for it." -> **Target:** `/campaign` (Because "AND then")

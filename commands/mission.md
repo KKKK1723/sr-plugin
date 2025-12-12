@@ -57,23 +57,23 @@ model: sonnet
         > - **[T] TDD Mode:** Robust execution (Test -> Impl -> Verify). Recommended for logic/algo changes.
         > - **[N] Abort.**"
 
-### Phase 4: Execution & Quality Assurance (The Loop)
+### Phase 4: Execution & Quality Assurance (The Sliced Loop)
 
-1.  **Dispatch Vanguard (The Strike):**
-    * **Analyze User Response:**
-        * If "Y" -> Set `FLAG` = ""
-        * If "T" -> Set `FLAG` = "**[ENABLE_TDD_PROTOCOL]**"
-    * **Action:** `Task(agent="worker", prompt="Execute plan in strategy file: [Path]. " + FLAG)`
+1.  **Strategy Assessment:**
+    * **Action:** Review the `<ExecutionPlan>` in `strategy-[topic].md`.
+    * **Decision:**
+        * **Small Plan (< 3 steps):** Execute in one go.
+        * **Heavy Plan (> 3 steps or multiple files):** Break it down into **Sequential Blocks**.
 
-2.  **Handle Result (SOS Check):**
-    * **Logic:** Check Worker's output status.
-        * **If `STATUS: FAILED`:**
-            * **STOP.** Do NOT call Critic.
-            * **Report to User:** "Mission Aborted. Worker blocked: [Reason]. How should we proceed?"
-        * **If `STATUS: COMPLETED`:** Proceed to Step 3.
+2.  **Dispatch Vanguard (Iterative Strike):**
+    * **Loop:** For each Block in the Plan:
+        1.  **Execute:** `Task(agent="worker", prompt="Focus ONLY on [Current Block] from strategy file. Ignore future steps for now. " + FLAG)`
+        2.  **Verify:** Check Worker status. (Handle SOS/Failed as before).
+        3.  **Review (Micro-Audit):** Call `Task(agent="critic", prompt="Review changes from this specific block.")`.
+        4.  **Proceed:** If Pass, move to next Block.
 
-3.  **Dispatch MP (The Audit):**
-    * **Action:** Call `Task(agent="critic", prompt="Review changes made by Worker.")`.
+3.  **Integration Test:**
+    * **Action:** Once all blocks are done, call `Task(agent="worker", prompt="Run FULL test suite to ensure no regressions.")`.
     * **Decision Logic:**
         * **IF PASS:** Proceed to Phase 5.
         * **IF FAIL:**
