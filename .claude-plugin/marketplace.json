@@ -1,0 +1,15 @@
+{
+  "name": "sr-plugin",
+  "owner": {
+    "name": "Sruimeng",
+    "email": "ruimeng.suuuuu@gmail.com"
+  },
+  "description": "Sruimeng internal Claude Code plugin marketplace",
+  "plugins": [
+    {
+      "name": "sr",
+      "source": "./",
+      "description": "Sruimeng custom commands and agents for Claude Code"
+    }
+  ]
+}
