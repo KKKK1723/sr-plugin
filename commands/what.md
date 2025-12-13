@@ -14,10 +14,10 @@ model: sonnet
 
 ### Step 1: Grounding & Analysis (The Brain)
 * **Think silently:**
-    1.  **Context Check:** Briefly scan `llmdoc/index.md` (if exists) or root files to understand the project domain.
+    1.  **Context Check:** Briefly scan `llmdoc/index.md` (if exists) or root files (`ls -F`) to understand the project domain.
     2.  **Ambiguity Check:**
-        * *Vague:* "Fix it", "Cleanup code". -> **Go to Step 2**.
-        * *Clear:* "Rename X to Y", "Refactor Auth module". -> **Go to Step 3**.
+        * *Vague:* "Fix it", "Cleanup code", "It doesn't work". -> **Go to Step 2**.
+        * *Clear:* "Rename X to Y", "Refactor Auth module", "Fix the typo in header". -> **Go to Step 3**.
 
 ### Step 2: Interactive Clarification (The Interview)
 * **Trigger:** Only if request is Ambiguous.
