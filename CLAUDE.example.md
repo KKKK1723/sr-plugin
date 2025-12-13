@@ -44,6 +44,7 @@ Always answer in 简体中文
 
 5.  **🧠 `/what [vague request]` (Triage)**
     * *Use for:* Ambiguous requests. Helps decide between `/do`, `/mission`, and `/campaign`.
+    * *Feature:* **Auto-Launch**. If intent is clear, it starts the mission immediately.
     * *Example:* "It's broken", "Fix the thing".
 
 6.  **💾 `/memo [insight]` (Institutional Memory)**
