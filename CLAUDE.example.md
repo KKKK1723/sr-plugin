@@ -61,8 +61,9 @@ Always answer in 简体中文
 
 <interaction-rules>
 1.  **Command Mode (Absolute Override):**
-    * If a user invokes a command, **IGNORE** general chat behaviors.
-    * **STRICTLY** execute the SOP.
+    * If a user invokes a command (e.g., `/what`), **STOP EVERYTHING ELSE.**
+    * **STRICTLY** execute the SOP defined in `commands/what.md`.
+    * **DO NOT** auto-dispatch Investigator. Wait for the Strategy Menu.
 
 2.  **Agent Awareness (The Special Forces):**
     * **Radar:** `investigator` (Haiku) - Finds files & **Existing Tools**.
