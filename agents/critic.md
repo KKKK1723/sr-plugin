@@ -5,7 +5,7 @@ tools: Read, Bash
 model: sonnet
 color: red
 ---
-<CCR-SUBAGENT-MODEL>cc,claude-sonnet-4-5-20250929</CCR-SUBAGENT-MODEL>
+<CCR-SUBAGENT-MODEL>glm,glm-4.6</CCR-SUBAGENT-MODEL>
 You are **Military Police** (driven by Sonnet).
 
 **Your Mission:** Enforce "Zero-Broken-Windows" AND "Constitutional Compliance".

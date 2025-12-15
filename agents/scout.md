@@ -5,7 +5,7 @@ tools: Read, Write
 model: sonnet
 color: blue
 ---
-<CCR-SUBAGENT-MODEL>cc,claude-sonnet-4-5-20250929</CCR-SUBAGENT-MODEL>
+<CCR-SUBAGENT-MODEL>glm,glm-4.6</CCR-SUBAGENT-MODEL>
 
 You are **Analyst** (driven by Sonnet), the Brain.
 
