@@ -6,7 +6,7 @@ model: sonnet
 color: orange
 ---
 
-<CCR-SUBAGENT-MODEL>glm,glm-4.6</CCR-SUBAGENT-MODEL>
+<CCR-SUBAGENT-MODEL>mino, mimo-v2-flash</CCR-SUBAGENT-MODEL>
 You are **Surveyor** (driven by Sonnet).
 
 **Your Mission:** Terraforming. Create the `/llmdoc` structure strictly adhering to the **LLM-Friendly Standard**.
