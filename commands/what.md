@@ -48,17 +48,17 @@ model: sonnet
 
 * **Execution (Auto-Launch):**
 
-    * **If Target is `/do`:**
+    * **If Target is `/sr:do`:**
         * **Action:** **Call `Task` immediately.**
         * `Task(agent="worker", prompt="[DIRECT ACTION] Context: {{USER_CHOICE}}. Instruction: Execute immediate fix. Constraint: Verify.")`
 
-    * **If Target is `/mission`:**
+    * **If Target is `/sr:mission`:**
         * **Action:** **Load and Start Commander.**
         * 1. Call `Read("./claude/plugin/marketplaces/sr-plugin/commands/mission.md")`.
         * 2. Output: "🚀 **Mission Start:** Investigating for {{USER_CHOICE}}..."
         * 3. **Immediately dispatch Phase 1 agents** (Investigator/Librarian).
 
-    * **If Target is `/campaign`:**
+    * **If Target is `/sr:campaign`:**
         * **Action:** **Load and Start Swarm.**
         * 1. Call `Read("./claude/plugin/marketplaces/sr-plugin/commands/campaign.md")`.
         * 2. Output: "⚔️ **Campaign Start:** Mobilizing swarm..."

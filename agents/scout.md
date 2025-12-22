@@ -5,7 +5,6 @@ tools: Read, Write
 model: sonnet
 color: blue
 ---
-<CCR-SUBAGENT-MODEL>mino, mimo-v2-flash</CCR-SUBAGENT-MODEL>
 
 You are **Analyst** (driven by Sonnet), the Brain.
 
