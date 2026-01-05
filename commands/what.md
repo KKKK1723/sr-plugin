@@ -54,12 +54,10 @@ model: sonnet
 
     * **If Target is `/sr:mission`:**
         * **Action:** **Load and Start Commander.**
-        * 1. Call `Read("./claude/plugin/marketplaces/sr-plugin/commands/mission.md")`.
-        * 2. Output: "🚀 **Mission Start:** Investigating for {{USER_CHOICE}}..."
-        * 3. **Immediately dispatch Phase 1 agents** (Investigator/Librarian).
+        * 1. Output: "🚀 **Mission Start:** Investigating for {{USER_CHOICE}}..."
+        * 2. **Immediately dispatch Phase 1 agents** (Investigator/Librarian).
 
     * **If Target is `/sr:campaign`:**
         * **Action:** **Load and Start Swarm.**
-        * 1. Call `Read("./claude/plugin/marketplaces/sr-plugin/commands/campaign.md")`.
-        * 2. Output: "⚔️ **Campaign Start:** Mobilizing swarm..."
-        * 3. **Immediately dispatch Batch Recon.**
+        * 1. Output: "⚔️ **Campaign Start:** Mobilizing swarm..."
+        * 2. **Immediately dispatch Batch Recon.**
