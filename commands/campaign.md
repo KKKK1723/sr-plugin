@@ -1,7 +1,6 @@
 ---
 description: "Swarm Mode. Executes batched parallel missions for maximum speed."
 argument-hint: "[Multi-objective goal, e.g., 'Create 5 demos']"
-model: sonnet
 ---
 
 # /campaign

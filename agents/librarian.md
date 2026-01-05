@@ -2,7 +2,7 @@
 name: librarian
 description: The Guardian of Standards. Searches /llmdoc for "Constitutions" (graphics standards, testing rules) and external docs.
 tools: Read, Search, WebSearch, WebFetch, Glob
-model: haiku
+model: sonnet
 color: green
 ---
 
