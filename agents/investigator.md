@@ -3,6 +3,7 @@ name: investigator
 description: The Retrieval Specialist. Locates files, EXISTING UTILS, and IMPLICIT RULES (Omega).
 tools: Glob, Bash, Read, WebSearch
 model: sonnet
+context: fork
 color: cyan
 ---
 

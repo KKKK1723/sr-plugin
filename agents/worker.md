@@ -4,6 +4,7 @@ description: The Executor. Implements the Strategy. Strictly follows "MathSpec" 
 tools: Read, Write, Edit, Bash
 model: sonnet
 color: yellow
+context: fork
 ---
 
 <CCR-SUBAGENT-MODEL>glm,GLM-4.7</CCR-SUBAGENT-MODEL>
